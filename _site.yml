@@ -4,9 +4,9 @@ navbar:
   title: "Home"
   right:
     - text: "About Me"
-      href: about.html
+      href: https://ei2262.github.io/about.html
     - icon: fa-regular fa-chart-bar
-      href: instaplot.html
+      href: https://ei2262.github.io/instaplot.html
     - icon: fa-envelope fa-lg
       href: mailto:<ei2262@cumc.columbia.edu>
     - icon: fa-github fa-lg
