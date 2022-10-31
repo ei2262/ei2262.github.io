@@ -1,0 +1,54 @@
+---
+title: "Instacart Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+![](https://i.pinimg.com/originals/5e/14/d2/5e14d2cd85ec711224a898a8a46062be.gif)
+
+We are going to look at Instacart data, which is an online grocery service that allows you to shop online from local stores. 
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(flexdashboard)
+library(plotly)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Graph of Restaurants in NYC
+
+```{r}
+data(rest_inspec)
+
+boro_rest = rest_inspec %>% 
+ select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag) %>% 
+  mutate(score=cut(rest_inspec$score, breaks=c(0,13,27,Inf), labels=c("A","B","C"))) %>% 
+  drop_na(score)
+
+boro_rest %>%
+  count(boro) %>% 
+  mutate(boro = fct_reorder(boro, n)) %>% 
+  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar", colors = "viridis")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+

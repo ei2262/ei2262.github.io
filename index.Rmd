@@ -5,9 +5,15 @@ output:
     toc: true
     toc_float: true
 ---
-
+$$\\[.1in]$$
 ![](https://i.pinimg.com/originals/c2/83/f6/c283f68fcbc8ac4a7d4be1340df6391a.gif)
-
+$$\\[.1in]$$
 
 # Welcome!
+
+My name is Esther Kim and you are viewing my page! 
+
+To quickly introduce myself, I am an MPH student in the Epidemiology department and I am completing an advanced certificate in Applied Biostatistics and Public Health Data Science. 
+
+I am currently taking Data Science I and created this beautiful website to show off my website building skills. To learn more about me, click [here](about.html).
 

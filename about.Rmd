@@ -6,7 +6,30 @@ output:
     toc_float: true
 ---
 
-# Hello!
+$$\\[.1in]$$
 
-![](https://i.pinimg.com/originals/c2/83/f6/c283f68fcbc8ac4a7d4be1340df6391a.gif)
-I am a MPH candidate
+## Where I'm From
+
+![](https://i.pinimg.com/originals/72/8c/c8/728cc80639a076e9af5b8d1cc60636b2.gif)
+
+
+I am a native New Yorker, born and raised in Queens, NY.
+
+$$\\[.1in]$$
+
+## Education
+
+I graduated Baruch College with a BA in Biological Sciences and a minor in Mathematics. I am currently pursuing an MPH in Epidemiology with a certificate in Applied Biostatistics and Public Health Data Science.
+
+$$\\[.1in]$$
+
+## Professional Experience
+
+During the summer, I completed my practicum with ICAP, where I developed a research question from a parent project that implemented an enhanced model of integrating family planning and into existing HIV treatment services at six health facilities in Lusaka, Zambia. I developed an analysis plan that focused on understanding the low number of longer-acting reversible contraceptives (LARCs) among women compared to shorter-acting reversible contraceptives (SARCs). I have developed this project into my thesis and will also be presenting at Masters Student Day 2022.
+
+$$\\[.1in]$$
+
+## Career Goals
+
+I want to pursue a career that combines data science and the hard sciences. Whether it is working in the pharmaceutical industry or the public health tech industry, I plan to use the skills I gather from this course and my degree to improve the delivery of healthcare to all.
+
