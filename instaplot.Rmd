@@ -21,29 +21,34 @@ library(plotly)
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Graph of Restaurants in NYC
+### Total Number of Popular Chain Restaurants in NYC
 
 ```{r}
 data(rest_inspec)
 
 boro_rest = rest_inspec %>% 
  select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag) %>% 
-  mutate(score=cut(rest_inspec$score, breaks=c(0,13,27,Inf), labels=c("A","B","C"))) %>% 
+    filter(
+    dba %in% c("DUNKIN' DONUTS", "STARBUCKS", "BURGER KING", "SWEETGREEN", "SUBWAY", "MCDONALD'S", "PANERA BREAD", "PARIS BAGUETTE", "PRET A MANGER", "FRESH & CO")
+  ) %>% 
   drop_na(score)
 
 boro_rest %>%
-  count(boro) %>% 
-  mutate(boro = fct_reorder(boro, n)) %>% 
-  plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar", colors = "viridis")
+  count(dba) %>% 
+  mutate(dba = fct_reorder(dba, n)) %>% 
+  plot_ly(x = ~dba, y = ~n, color = ~dba, type = "bar", colors = "viridis")
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Scores of Popular Chain Restaurants in NYC
 
 ```{r}
-
+boro_rest %>% 
+  plot_ly(x = ~score, y = ~interaction(boro)) %>%
+  add_boxplot(color = ~dba) %>%
+  layout(yaxis = list(title = ""))
 ```
 
 ### Chart C
