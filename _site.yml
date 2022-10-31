@@ -11,5 +11,4 @@ navbar:
       href: https://github.com/ei2262
 output:
   html_document:
-    theme: cerulean
-site: bookdown::bookdown_site
+    theme: yeti
