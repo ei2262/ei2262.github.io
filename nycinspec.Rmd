@@ -1,17 +1,15 @@
 ---
-title: "Instacart Dashboard"
+title: "NYC Restaurant Inspection Dashboard"
 output: 
-  flexdashboard::flex_dashboard:
-    orientation: rows
+  flexdashboard::flex_dashboard: 
+    orientation: columns
+    vertical_layout: fill
 ---
 
-![](https://i.pinimg.com/originals/5e/14/d2/5e14d2cd85ec711224a898a8a46062be.gif)
 
-We are going to look at Instacart data, which is an online grocery service that allows you to shop online from local stores. 
-
-
-
+{data-width=600}
 -----------------------------------------------------------------------
+![](https://i.pinimg.com/originals/5e/14/d2/5e14d2cd85ec711224a898a8a46062be.gif)
 
 ### Total Number of Popular Chain Restaurants in NYC
 
@@ -40,7 +38,7 @@ boro_rest %>%
   plot_ly(x = ~interaction(dba), y = ~n, color = ~dba, type = "bar", colors = "viridis")
 ```
 
-{.tabset .tabset-fade}
+{data-width=350}
 -----------------------------------------------------------------------
 
 ### Scores of Popular Chain Restaurants in NYC

@@ -4,10 +4,14 @@ output:
   html_document:
     toc: true
     toc_float: true
+    
 ---
-$$\\[.1in]$$
+<p>&nbsp;</p>
+
+
 ![](https://i.pinimg.com/originals/c2/83/f6/c283f68fcbc8ac4a7d4be1340df6391a.gif)
-$$\\[.1in]$$
+
+<p>&nbsp;</p>
 
 # Welcome!
 
@@ -17,3 +21,21 @@ To quickly introduce myself, I am an MPH student in the Epidemiology department 
 
 I am currently taking Data Science I and created this beautiful website to show off my website building skills. To learn more about me, click [here](about.html).
 
+<p>&nbsp;</p>
+
+###  Dashboard
+
+To learn more about inspections performed on popular NYC chain restaurants, click [here](nycinspec.html) or the chart icon on the top right corner. The **NYC Restaurant Inspection Dashboard** focuses on the following 10 popular chain restaurants in NYC:
+
+1. Burger King
+2. Dunkin' Donuts (renamed Dunkin')
+3. Fresh & Co
+4. McDonald's
+5. Panera Bread
+6. Paris Baguette
+7. Pret a Manger
+8. Starbucks
+9. Subway
+10. Sweetgreen
+
+The dashboard contains graphs that show how many of each restaurant were inspected, the scores each restaurant received after inspection, and the critical level of violation (critical vs. not critical). To filter the large dataset and produce a reasonable product, `N/A` observations were dropped for variables `score` and `grade`. `Score` is the number each restaurant received after inspection. `Grade` is the letter grade given depending on the numeric `score` value received. 
