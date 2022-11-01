@@ -54,7 +54,7 @@ boro_rest %>%
 ```
 
 
-### Popular Restaurant Chain Restaurants by Level of Critical Violation 
+### Level of Critical Violations of Popular Restaurant Chain Restaurants by Borough
 
 ```{r, echo = FALSE, warning = FALSE}
 boro_rest %>% 

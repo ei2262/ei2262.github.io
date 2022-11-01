@@ -39,3 +39,10 @@ To learn more about inspections performed on popular NYC chain restaurants, clic
 10. Sweetgreen
 
 The dashboard contains graphs that show how many of each restaurant were inspected, the scores each restaurant received after inspection, and the critical level of violation (critical vs. not critical). To filter the large dataset and produce a reasonable product, `N/A` observations were dropped for variables `score` and `grade`. `Score` is the number each restaurant received after inspection. `Grade` is the letter grade given depending on the numeric `score` value received. The score to grade conversion is the following: A = 0 - 13, B = 14 - 27, C = 28+. An important note about the critical violations are those that have a `critical` violation are most likely to contribute to foodborne illness.
+
+<p>&nbsp;</p>
+
+### Contact Me
+
+Feel free to check my [LinkedIn](https://www.linkedin.com/in/kim-h-esther/) and [GitHub](https://github.com/ei2262). You may also contact me by [e-mail](mailto: ei2262@cumc.columbia.edu).  
+*All contact information is available on the top right corner of this page.*
