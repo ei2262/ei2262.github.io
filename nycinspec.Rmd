@@ -1,13 +1,14 @@
 ---
 title: "NYC Restaurant Inspection Dashboard"
 output: 
-  flexdashboard::flex_dashboard: 
+  flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    theme: sandstone
 ---
 
 
-{data-width=600}
+{data-width=550}
 -----------------------------------------------------------------------
 
 ### Total Number of Popular Chain Restaurants in NYC
@@ -34,10 +35,11 @@ boro_rest %>%
   select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag, grade, street) %>% 
   count(dba) %>% 
   mutate(dba = fct_reorder(dba, n)) %>% 
-  plot_ly(x = ~interaction(dba), y = ~n, color = ~dba, type = "bar", colors = "viridis")
+  plot_ly(x = ~interaction(dba), y = ~n, color = ~dba, type = "bar", colors = "viridis") %>% 
+  layout(xaxis = list(title = "Chain Restaurant"), yaxis = list(title = "Count"))
 ```
 
-{data-width=350}
+{data-width=400}
 -----------------------------------------------------------------------
 
 ### Scores of Popular Chain Restaurants in NYC
@@ -46,9 +48,10 @@ boro_rest %>%
 boro_rest %>% 
   mutate(text_label = str_c("Chain: ", dba, "\nGrade: ", grade)) %>% 
   plot_ly(x = ~score, y = ~interaction(boro)) %>% 
-  add_boxplot(color = ~dba, text = ~text_label)
+  add_boxplot(color = ~dba, text = ~text_label) %>% 
+  layout(xaxis = list(title = "Scores"), yaxis = list(title = "Borough"))
 ```
-*Note: Scores 0-13 = A, 14-27 = B, 28+ = C*
+
 
 ### Popular Restaurant Chain Restaurants by Level of Critical Violation 
 
@@ -62,6 +65,7 @@ boro_rest %>%
   ) %>% 
   drop_na(score) %>% 
   mutate(text_label = str_c("Chain: ", dba, "\nGrade: ", grade, "\nStreet: ", street)) %>% 
-  plot_ly(x = ~score, y = ~interaction(critical_flag,boro) ,type = "scatter", mode = "markers",  color = ~dba, text = ~text_label)
+  plot_ly(x = ~score, y = ~interaction(critical_flag,boro) ,type = "scatter", mode = "markers",  color = ~dba, text = ~text_label) %>% 
+  layout(xaxis = list(title = "Scores"), yaxis = list(title = "Critial Level by Borough"))
 ```
-*Note: Critical violations are those most likely to contribute to foodborne illness.*
+

@@ -6,11 +6,11 @@ navbar:
     - text: "About Me"
       href: https://ei2262.github.io/about.html
     - icon: fa-regular fa-chart-bar
-      href: https://ei2262.github.io/instaplot.html
+      href: https://ei2262.github.io/nycinspec.html
     - icon: fa-envelope fa-lg
       href: mailto:<ei2262@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/ei2262
 output:
   html_document:
-    theme: yeti
+    theme: sandstone
