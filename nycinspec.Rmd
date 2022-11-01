@@ -2,9 +2,10 @@
 title: "NYC Restaurant Inspection Dashboard"
 output: 
   flexdashboard::flex_dashboard:
+    theme: sandstone
     orientation: columns
     vertical_layout: fill
-    theme: sandstone
+
 ---
 
 
