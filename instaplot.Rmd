@@ -2,8 +2,7 @@
 title: "Instacart Dashboard"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+    orientation: rows
 ---
 
 ![](https://i.pinimg.com/originals/5e/14/d2/5e14d2cd85ec711224a898a8a46062be.gif)
@@ -11,49 +10,61 @@ output:
 We are going to look at Instacart data, which is an online grocery service that allows you to shop online from local stores. 
 
 
-```{r setup, include=FALSE}
+
+-----------------------------------------------------------------------
+
+### Total Number of Popular Chain Restaurants in NYC
+
+```{r setup, include = FALSE}
 library(tidyverse)
 library(p8105.datasets)
 library(flexdashboard)
 library(plotly)
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Total Number of Popular Chain Restaurants in NYC
-
-```{r}
+```{r, echo = FALSE}
 data(rest_inspec)
 
 boro_rest = rest_inspec %>% 
- select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag) %>% 
+ select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag, grade, street) %>% 
     filter(
     dba %in% c("DUNKIN' DONUTS", "STARBUCKS", "BURGER KING", "SWEETGREEN", "SUBWAY", "MCDONALD'S", "PANERA BREAD", "PARIS BAGUETTE", "PRET A MANGER", "FRESH & CO")
   ) %>% 
-  drop_na(score)
+  drop_na(score) %>% 
+  drop_na(grade)
 
 boro_rest %>%
+  select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag, grade, street) %>% 
   count(dba) %>% 
   mutate(dba = fct_reorder(dba, n)) %>% 
-  plot_ly(x = ~dba, y = ~n, color = ~dba, type = "bar", colors = "viridis")
+  plot_ly(x = ~interaction(dba), y = ~n, color = ~dba, type = "bar", colors = "viridis")
 ```
 
-Column {data-width=350}
+{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### Scores of Popular Chain Restaurants in NYC
 
-```{r}
+```{r, echo = FALSE, warning = FALSE}
 boro_rest %>% 
-  plot_ly(x = ~score, y = ~interaction(boro)) %>%
-  add_boxplot(color = ~dba) %>%
-  layout(yaxis = list(title = ""))
+  mutate(text_label = str_c("Chain: ", dba, "\nGrade: ", grade)) %>% 
+  plot_ly(x = ~score, y = ~interaction(boro)) %>% 
+  add_boxplot(color = ~dba, text = ~text_label)
 ```
+*Note: Scores 0-13 = A, 14-27 = B, 28+ = C*
 
-### Chart C
+### Popular Restaurant Chain Restaurants by Level of Critical Violation 
 
-```{r}
-
+```{r, echo = FALSE, warning = FALSE}
+boro_rest %>% 
+   select(boro, violation_description, action, score, dba, cuisine_description, inspection_type, critical_flag, grade, street) %>% 
+  drop_na(grade) %>% 
+  filter(
+    dba %in% c("DUNKIN' DONUTS", "STARBUCKS", "BURGER KING", "SWEETGREEN", "SUBWAY", "MCDONALD'S", "PANERA BREAD", "PARIS BAGUETTE", "PRET A MANGER", "FRESH & CO"),
+    critical_flag %in% c("Critical", "Not Critical")
+  ) %>% 
+  drop_na(score) %>% 
+  mutate(text_label = str_c("Chain: ", dba, "\nGrade: ", grade, "\nStreet: ", street)) %>% 
+  plot_ly(x = ~score, y = ~interaction(critical_flag,boro) ,type = "scatter", mode = "markers",  color = ~dba, text = ~text_label)
 ```
-
+*Note: Critical violations are those most likely to contribute to foodborne illness.*
